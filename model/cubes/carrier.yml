@@ -1,0 +1,27 @@
+cubes:
+  - name: carrier
+    sql: >
+      SELECT 1 AS id, 'C.H. Robinson' AS carrier, '2026-04-13T23:00:00'::TIMESTAMP AS timestamp, 5 AS loads UNION ALL
+      SELECT 2 AS id, 'C.H. Robinson' AS carrier, '2026-04-14T00:00:00'::TIMESTAMP AS timestamp, 2 AS loads UNION ALL
+      SELECT 3 AS id, 'C.H. Robinson' AS carrier, '2026-04-14T00:30:00'::TIMESTAMP AS timestamp, 1 AS loads UNION ALL
+      SELECT 4 AS id, 'C.H. Robinson' AS carrier, '2026-04-14T22:00:00'::TIMESTAMP AS timestamp, 1 AS loads UNION ALL
+      SELECT 5 AS id, 'ACME' AS carrier, '2026-04-14T22:30:00'::TIMESTAMP AS timestamp, 14 AS loads
+ 
+    dimensions:
+      - name: id
+        sql: id
+        type: number
+        primary_key: true
+
+      - name: carrier
+        sql: carrier
+        type: string
+
+      - name: timestamp
+        sql: timestamp
+        type: time
+
+    measures:
+      - name: sum_of_loads
+        sql: loads
+        type: sum

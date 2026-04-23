@@ -1,0 +1,62 @@
+cubes:
+  - name: customer_private
+    sql_table: TPCH_SF100.CUSTOMER
+
+    # joins:
+    #   - name: nation
+    #     sql: "{CUBE}.C_NATIONKEY = {nation}.N_NATIONKEY"
+    #     relationship: many_to_one
+
+    dimensions:
+      - name: cust_key
+        sql: C_CUSTKEY
+        type: number
+        primary_key: true
+
+      - name: name
+        sql: C_NAME
+        type: string
+        description: Customer name
+
+      - name: address
+        sql: C_ADDRESS
+        type: string
+
+      - name: nation_key
+        sql: C_NATIONKEY
+        type: number
+
+      - name: phone
+        sql: C_PHONE
+        type: string
+        public: false
+
+      - name: acct_bal
+        sql: C_ACCTBAL
+        type: number
+        description: Customer account balance
+
+      - name: mkt_segment
+        sql: C_MKTSEGMENT
+        type: string
+        description: Customer market segment (e.g. AUTOMOBILE, BUILDING, FURNITURE, HOUSEHOLD, MACHINERY)
+
+      - name: comment
+        sql: C_COMMENT
+        type: string
+
+    measures:
+      - name: count
+        type: count
+        description: Total number of customers
+
+      - name: total_acct_bal
+        sql: C_ACCTBAL
+        type: sum
+        description: Sum of all customer account balances
+        public: false
+
+      - name: avg_acct_bal
+        sql: C_ACCTBAL
+        type: avg
+        description: Average customer account balance

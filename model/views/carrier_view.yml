@@ -1,0 +1,6 @@
+views:
+  - name: carrier_view
+   
+    cubes:
+      - join_path: carrier
+        includes: "*"

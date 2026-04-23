@@ -1,0 +1,6 @@
+views:
+  - name: customer_private_view
+   
+    cubes:
+      - join_path: customer_private
+        includes: "*"
